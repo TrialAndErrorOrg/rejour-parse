@@ -1,3 +1,4 @@
+/* eslint-disable */
 const config = {
   displayName: 'rojur-parse',
   preset: '../../../jest.preset.js',
