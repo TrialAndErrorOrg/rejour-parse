@@ -1,11 +1,16 @@
 {
   "name": "rejour-parse",
-  "version": "0.1.1",
+  "version": "0.2.0",
+  "description": "Parser for `rejour` that parses the `JATS` document to a `jast` tree.",
   "license": "GPL-3.0-or-later",
-  "repository": "https://github.com/TrialAndErrorOrg/parsers",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TrialAndErrorOrg/parsers.git",
+    "directory": "libs/rejour/rejour-parse"
+  },
+  "homepage": "https://github.com/TrialAndErrorOrg/parsers/tree/main/libs/rejour/rejour-parse#readme",
   "author": "Thomas F. K. Jorna <hello@tefkah.com>",
   "type": "module",
-  "description": "Parser for `rejour` that parses the `JATS` document to a `jast` tree.",
   "keywords": [
     "unified",
     "abstract",
@@ -15,24 +20,38 @@
     "jats-xml",
     "rejour"
   ],
+  "exports": {
+    ".": {
+      "@jote/source": "./src/index.ts",
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
+  },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.lib.json",
+    "typecheck": "tsc -p tsconfig.json",
+    "test": "vitest run"
+  },
   "typedoc": {
     "entryPoint": "./src/index.ts",
     "readmeFile": "./README.md",
     "displayName": "rejour-parse",
     "tsconfig": "./tsconfig.lib.json"
   },
-  "exports": {
-    ".": {
-      "types": "./index.d.ts",
-      "import": "./index.js"
-    }
+  "dependencies": {
+    "@types/xast": "catalog:",
+    "jast-types": "workspace:^",
+    "unified": "catalog:",
+    "unist-util-filter": "catalog:",
+    "unist-util-map": "catalog:",
+    "xast-util-from-xml": "catalog:"
   },
-  "main": "./index.js",
-  "module": "./index.js",
-  "types": "./index.d.ts",
-  "files": [
-    "index.d.ts",
-    "index.js",
-    "/lib"
-  ]
+  "devDependencies": {
+    "unist-util-remove-position": "catalog:"
+  }
 }
